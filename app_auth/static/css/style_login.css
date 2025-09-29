@@ -1,0 +1,63 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 8px solid #f1f1f1;}                 /* Ver melhor aqui o SIGN UP !!!!!! */ 
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    color:#04AA6D;
+}
+
+input[type=text], input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;            /* ALTERAR AQUIIII -- LOGIN */
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+.align-middle {
+width: auto;
+padding: 10px 18px;
+background-color: #f44336;
+}
+
+.imgcontainer {                 /* IMAGEM --- MUDAR TAMANHO ???? */
+text-align: center;
+width: 80%;
+/*margin: 10px 0 8px 0; */
+}
+
+img.avatar {
+width: 40%;
+border-radius: 50%;
+}
+
+.container {
+text-align: center;
+padding: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    .align-middle {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+}
+

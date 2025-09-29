@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>ADsiter</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">	
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+<!-- Responsive-->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.mCustomScrollbar.min.css') }}">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets --> 
+<link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body>
+<style>
+	.loading {
+		display: none;
+		background-image: url('static/img/bg.jpg');
+	}
+</style>
+<div class="loading" style="height: 1080px;">
+	<style>
+		.loader {
+		margin: auto;
+		width: 50%;
+		padding: 10px;
+
+
+		border: 16px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 16px solid #3498db;
+		width: 120px;
+		height: 120px;
+		-webkit-animation: spin 2s linear infinite; /* Safari */
+		animation: spin 2s linear infinite;
+		}
+
+		.center {
+		margin: auto;
+		width: 50%;
+		padding: 10px;
+		}
+
+		/* Safari */
+		@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+		}
+	</style>
+	<div class="center">
+		<h2 style="color:white">Please start UAP app and wait</h2>
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<div class="loader"></div>
+</div>
+<div id="uap">
+	<!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-3">
+					<div class="logo"><a href="/"><img src="/static/img/logo.png"></a></div>
+				</div>
+				<div class="col-sm-6">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                           <a class="nav-item nav-link" href="/">Home</a>
+                           <a class="nav-item nav-link" href="products">Products</a>
+                           <a class="nav-item nav-link" href="about">About</a>
+                           <a class="nav-item nav-link" href="client_support">Client Support</a>
+                        </div>
+                    </div>
+                    </nav>
+				</div>
+				{% if user: %}
+				<div class="col-sm-6 col-lg-3">
+					<div class="search_main">
+                    <button class="submit_bt"><a href="/account"><span class="doctor"><img src="static/img/login.png" style="padding-right: 10px;"></span>{{ user }}</a></button>
+				    </div>
+				</div>
+				{% else: %}
+				<div class="col-sm-6 col-lg-3">
+
+                    <button class="submit_bt" onclick="load()"><a href="/uap"><span class="doctor"><img src="static/img/uap.png" style="padding-right: 10px;"></span>UAP</a></button>
+					<button class="submit_bt"><a href="/login_page"><span class="doctor"><img src="static/img/login.png" style="padding-right: 10px;"></span>Login</a></button>
+
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- header section end -->
+	<!-- banner section start -->
+	<div class="layout_padding banner_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="banner_taital">Welcome to TechStore!</h1>
+					<p class="browse_text">Browse from more than 15,000,000 tecky products on daily basis</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- banner section end -->
+
+
+	<!-- client section start -->
+    <div class="layout_padding clients_section">
+    	<div class="container">
+    		<div id="client_slide" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#client_slide" data-slide-to="0" class="active"></li>
+    <li data-target="#client_slide" data-slide-to="1"></li>
+    <li data-target="#client_slide" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+    			<div class="col-sm-12">
+    				<h1 class="promoted_text">Tech <span style="border-bottom: 5px solid #4bc714;">Store</span></h1>
+    				<div class="client_img">
+						<div id="product_img1"></div>
+					</div>
+    				<h1 class="client_text" id="product_title1">ERROR! </h1>
+    				<p class="long_text" id="product_description1">ERROR!</p>
+    			</div>
+    		</div>
+    </div>
+    <div class="carousel-item">
+      <div class="row">
+    			<div class="col-sm-12">
+    				<h1 class="promoted_text">Tech <span style="border-bottom: 5px solid #4bc714;">Store</span></h1>
+    				<div class="client_img">
+						<div id="product_img2"></div>
+					</div>
+    				<h1 class="client_text" id="product_title2">ERROR! </h1>
+    				<p class="long_text" id="product_description2">ERROR!</p>
+    			</div>
+    		</div>
+    </div>
+    <div class="carousel-item">
+      <div class="row">
+    			<div class="col-sm-12">
+    				<h1 class="promoted_text">Tech <span style="border-bottom: 5px solid #4bc714;">Store</span></h1>
+    				<div class="client_img">
+						<div id="product_img3"></div>
+					</div>
+    				<h1 class="client_text" id="product_title3">ERROR! </h1>
+    				<p class="long_text" id="product_description3">ERROR!</p>
+    			</div>
+    		</div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+	<!-- client section end -->
+
+	<script>
+		var data = 	[
+						"PENs%Pen Drive ou Memória USB Flash Drive é um dispositivo de armazenamento de dados que inclui memória flash e possui uma interface USB integrada, permitindo uma conexão a uma porta USB de um computador ou outro equipamento com uma entrada USB, como um rádio ou televisão.%static/img/pen.jpg", 
+						"Ratos%O mouse funciona como um apontador sobre a tela/ecrã do computador e disponibiliza, normalmente, quatro tipos de operações: movimento, clique, duplo clique e arrastar e largar. Existem modelos com um, dois, três ou mais botões, cuja funcionalidade depende do ambiente de trabalho e do programa que está a ser utilizado. Claramente, o botão esquerdo é o mais utilizado.%static/img/rato.webp", 
+						"Fones%dispositivo que converte ondas elétricas em sinais sonoros e que se põe diretamente no ouvido para permitir que o som seja escutado apenas pelo seu portador; auricular, auscultador.%static/img/fones.jpg",
+						"PCs%Computador é um conjunto de componentes eletrônicos (máquina) capaz de executar variados tipos de algoritmos e tratamento de informações (processamento de dados). Um computador pode possuir inúmeros atributos, dentre eles armazenamento de dados, processamento de dados, cálculo em grande escala, desenho industrial, tratamento de imagens gráficas, realidade virtual, entretenimento e cultura.%static/img/pc.jpg",
+						"Câmaras%Uma câmera fotográfica (português brasileiro) ou câmara fotográfica (português europeu) é um instrumento óptico para captação de imagens na forma de fotografias individuais, que são armazenadas localmente, transmitidas para outro local, ou ambos. Como capta informações sobre elementos externos sem ter contato físico com eles, tecnicamente é classificada como um dispositivo de sensoriamento remoto.%static/img/cam.png",
+						"Smartphones%Um smartphone (palavra inglesa que significa telefone inteligente, ainda sem correspondente em português) é um celular (telemóvel em Portugal) que combina recursos de computadores pessoais, com funcionalidades avançadas que podem ser estendidas por meio de programas aplicativos executados pelo seu sistema operacional (SO - sistema operativo, ou OS - operating system), chamados simplesmente aplicações. Os sistemas operacionais dos smartphones permitem que desenvolvedores criem milhares de programas adicionais, com diversas utilidades, agregados em lojas online como o Google Play para Android e a Apple App Store para iOS.%static/img/Smartphones.jpg",
+						"Teclados%Na computação, o teclado de computador é um dispositivo que possui uma série de botões ou teclas, utilizado para inserir dados no computador. É um tipo de periférico de entrada utilizado pelo usuário para a entrada manual no sistema de dados e comandos. Possui teclas representando letras, números, símbolos e outras funções, baseado no modelo de teclado das antigas máquinas de escrever.%static/img/teclados.jpg",
+						"Monitores%O monitor de computador (em Português Brasileiro) ou ecrã do computador (em Português de Portugal) é o principal dispositivo de saída (interface), que mostra dados ou informação ao usuário.%static/img/monitores.jpg"
+						];
+
+		var x = Math.floor(Math.random() * data.length);
+		var res = data[x].split("%");
+		document.getElementById("product_title1").innerHTML = res[0];
+		document.getElementById("product_description1").innerHTML = res[1];
+		var img1 = document.createElement("img");
+		img1.src = res[2];
+		var src1 = document.getElementById("product_img1");
+		src1.appendChild(img1);
+
+		var y = Math.floor(Math.random() * data.length);
+
+		while(x==y){
+			y = Math.floor(Math.random() * data.length);
+		}
+
+		res = data[y].split("%");
+		document.getElementById("product_title2").innerHTML = res[0];
+		document.getElementById("product_description2").innerHTML = res[1];
+		var img2 = document.createElement("img");
+		img2.src = res[2];
+		var src2 = document.getElementById("product_img2");
+		src2.appendChild(img2);
+
+		var z = Math.floor(Math.random() * data.length);
+
+		while(z==x || z==y){
+			z = Math.floor(Math.random() * data.length);
+		}
+
+		res = data[z].split("%");
+		document.getElementById("product_title3").innerHTML = res[0];
+		document.getElementById("product_description3").innerHTML = res[1];
+		var img3 = document.createElement("img");
+		img3.src = res[2];
+		var src3 = document.getElementById("product_img3");
+		src3.appendChild(img3);
+  
+		</script>
+	
+	
+	<!-- copyright section start -->
+    <div class="copyright">
+    	<p class="copyright_text">2019 All Rights Reserved. Design By <a href="https://html.design"> Free Html Templates</p>
+    </div>
+	<!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/popper.min.js"></script>
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+      <script src="static/js/jquery-3.0.0.min.js"></script>
+	  <script src="static/js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="static/js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         $(".zoom").hover(function(){
+         
+         $(this).addClass('transition');
+         }, function(){
+         
+         $(this).removeClass('transition');
+         });
+         });
+         
+      </script> 
+
+	<script>
+	function load() {
+		$(".loading").show();
+        $("#uap").remove();  
+	}
+	</script>
+
+</div>  
+</body>
+</html>

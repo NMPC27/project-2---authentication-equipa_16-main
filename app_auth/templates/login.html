@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static',filename='css/style_login.css') }}" type="text/css" rel="stylesheet">
+    <title>ADsiter</title>
+
+    <!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+<!-- Responsive-->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.mCustomScrollbar.min.css') }}">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets --> 
+<link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+<style>
+    /* Pen-specific styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-size: 1.25rem;
+      font-family: sans-serif;
+      line-height: 150%;
+      text-shadow: 0 2px 2px #ffffff;
+    }
+    
+    section {
+      color: #fff;
+      text-align: center;
+    }
+    
+    div {
+      height: 100%;
+    }
+    
+    article {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+      margin: 0 0 0.75rem 0;
+    }
+    
+    /* Pattern styles */
+    .container {
+      display: table;
+      width: 100%;
+    }
+    
+    .left-half {
+      background-color: #ffffff;
+      position: absolute;
+      left: 0px;
+      width: 50%;
+    }
+    
+    .right-half {
+      background-color: #ffffff;
+      position: absolute;
+      right: 0px;
+      width: 50%;
+    }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-3">
+					<div class="logo"><a href="/">
+						<img src="static/img/logo.png">
+					</a></div>
+				</div>
+				<div class="col-sm-6">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+							<a class="nav-item nav-link" href="/">Home</a>
+							<a class="nav-item nav-link" href="products">Products</a>
+							<a class="nav-item nav-link" href="about">About</a>
+							<a class="nav-item nav-link" href="client_support">Client Support</a>
+                        </div>
+                    </div>
+                    </nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- header section end -->
+
+    <div style="height: 150px;">
+    </div>
+    
+    
+    <div class="left-half">
+        <h2>Login</h2>
+    <form action="/login" method="post">
+        <div class="container d-flex justify-content-left">
+            <p>Username</p>
+            <input type="text" placeholder="Enter Username" name="user" required>  <!-- username -->
+        </div>
+        <div class="container d-flex justify-content-left">
+            <p>Password</p> 
+            <input type="password" placeholder="Enter Password" name="password" required> <!-- password -->
+        </div>
+        <div class="container d-flex justify-content-left">
+            <button type="submit">Login</button>
+        </div>
+
+        <div class="container d-flex justify-content-left">
+          {% if alert==1: %}
+            <p style="color:red; font-size:35px">Username and password don't match!</p>
+          {% endif %}
+        </div>
+    </form>
+    </div>
+
+    <div class="right-half">
+        <h2>Sign up</h2>
+        <form action="/sign_up" method="post" enctype="multipart/form-data">
+            <div class="container d-flex justify-content-right">
+                <p>Email</p> 
+                <input type="text" placeholder="Enter Email" name="email" required> <!-- email -->
+            </div>
+            <div class="container d-flex justify-content-right">
+                <p>Username</p>
+                <input type="text" placeholder="Enter Username" name="user" required minlength=4>  <!-- username -->
+            </div>
+            <div class="container d-flex justify-content-right">
+                <p>Password</p> 
+                <input type="password" placeholder="Enter Password" name="password" required> <!-- password -->
+            </div>
+
+            <div class="container d-flex justify-content-right">
+              <p style="margin-top: 7px;">Avatar</p>
+              <input type="file" id="img" name="avatar" accept="image/*" required>
+            </div>
+
+            <div class="container d-flex justify-content-right">
+                <button type="submit">Sign up</button>
+            </div>
+            {% if alert==2: %}
+              <p style="color:red; font-size:35px">Insert a valid email.</p>
+            {% elif alert==3: %}
+              <p style="color:red; font-size:35px">Very weak password!</p>
+            {% elif alert==4: %}
+              <p style="color:red; font-size:35px">Username already taken!</p>
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>

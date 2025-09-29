@@ -1,0 +1,55 @@
+webDB.db decripted:
+
+19	webapp_user1	abc123NUNO%
+20	hello			abc123SILVEIRA%
+
+
+data.json decripted:
+{
+  "UAP_Users": [
+    {
+      "id": 1,
+      "user": "uap_user_1",
+      "pass": "uap_pass_1"
+    },
+    {
+      "id": 2,
+      "user": "uap_user_2",
+      "pass": "uap_pass_2"
+    }
+  ],
+  "uap_user_1": [
+    {
+      "id": 1,
+      "pass": "cunha_pass_1",
+      "site": "cunha_site_1",
+      "user": "cunha_user_1"
+    },
+    {
+      "id": 2,
+      "pass": "cunha_pass_2",
+      "site": "cunha_site_2",
+      "user": "cunha_user_2"
+    },
+	{
+	  "id": 3,
+      "pass": "abc123SILVEIRA%",
+      "site": "http://127.0.0.1:5000/",
+      "user": "hello"
+	}
+  ],
+  "uap_pass_2": [
+    {
+      "id": 1,
+      "pass": "silveira_pass_1",
+      "site": "silveira_site_1",
+      "user": "silveira_user_1"
+    },
+    {
+      "id": 2,
+      "pass": "silveira_pass_2",
+      "site": "silveira_site_2",
+      "user": "silveira_user_2"
+    }
+  ]
+}
