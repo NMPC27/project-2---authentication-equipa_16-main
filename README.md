@@ -1,40 +1,40 @@
 # Project-2-SIO-equipa_16
 
-### Autores
+### Authors
         - Nuno Cunha, 98124
         - Filipe Silveira, 97981
         - Nuno Matos, 97915
         - Ana Rosa, 98678
         
-### Dependencies (tested on python 3.8.10)
-pip install Flask
-pip install cryptography
+### Dependencies (tested on Python 3.8.10)
+        pip install Flask
+        pip install cryptography
 
 
-### Descrição do Projeto
+### Project Description
 
-UAP funcionalidades:
+UAP features:
 
-- Permite ter vários utilizadores, cada um deles com os seus pares de chaves (dns-username-password).
-- Permite que um novo utilizador se registe.
-- Um utilizador pode adicionar, remover e editar os seus pares de chaves.
-- Permite de forma assincrona fazer a autenticação numa webapp, sendo que existe um socket para ouvir as ligações na porta 6000. Neste sentido, basta ter a UAP ligada com a sessão iniciada, pelo que não é necessária nenhuma interação por parte do utilizador para além do clicar no butão "UAP" da webapp.
-- Tem vários shortcuts como clicar no "enter" para submeter os dados / editar pares de chaves, "delete" para eliminar pares de chaves e "double left click" para conseguir visualizar a password.
-- A UAP foi compilada para exe, porque se não seria trivial para um atacante ter acesso às contas dos utilizadores.
-- A UAP a cada dez minutos encerra a sessão do utilizador.
+- Allows multiple users, each with their own key pairs (DNS-username-password).
+- Allows new users to register.
+- A user can add, remove, and edit their key pairs.
+- Allows asynchronous authentication in a web app, with a socket to listen for connections on port 6000. In this sense, you only need to have the UAP connected with the session started, so no interaction is required from the user other than clicking the “UAP” button in the web app.
+- It has several shortcuts, such as clicking “enter” to submit data/edit key pairs, ‘delete’ to delete key pairs, and “double left click” to view the password.
+- The UAP was compiled to exe, because otherwise it would be trivial for an attacker to gain access to user accounts.
+- UAP logs the user out every ten minutes.
 
-Encriptação na UAP:
+Encryption in the UAP:
 
-- O ficheiro data.json está encriptado com cifra simétrica usando AES modo CBC, onde a KEY e o IV estão guardados no código da UAP. É de notar que como a UAP está compilada em exe fica mais difícil para um atacante descobrir a KEY e o IV.
-- As palavras passes e nomes de utilizador dos utilizadores da UAP estão também encriptados, sendo que sobre o username é feito um hash(sha-256) e na password é realizado um hash(sha-256) com um salt(sufixo). O salt é obtido através de um hash(sha-256) sobre o id do utilizador. 
-- A password dos pares de chaves de um utilizador são encriptadas com AES modo CBC, que é uma cifra simétrica, onde a KEY e o IV são diferentes para cada user da app. Os últimos 4 caracteres da KEY são os primeiros 4 do utilizador atual e os primeiros 4 caracteres do IV são os primeiros 4 do utilizador atual.
-- Todas as passwords dos pares de chaves têm um salt diferente que é obtido atraves de um hash(sha-256) sobre o id do par de chave, que é depois adicionado à password(sufixo). Por fim a password é encriptada com AES modo CBC onde a KEY e o IV são únicos desse utilizador.
+- The data.json file is encrypted with symmetric encryption using AES CBC mode, where the KEY and IV are stored in the UAP code. It should be noted that since the UAP is compiled in exe, it is more difficult for an attacker to discover the KEY and IV.
+- The passwords and usernames of UAP users are also encrypted, with the username being hashed (sha-256) and the password being hashed (sha-256) with a salt (suffix). The salt is obtained through a hash (sha-256) on the user ID. 
+- A user's key pair passwords are encrypted with AES CBC mode, which is a symmetric cipher, where the KEY and IV are different for each app user. The last 4 characters of the KEY are the first 4 of the current user, and the first 4 characters of the IV are the first 4 of the current user.
+- All key pair passwords have a different salt that is obtained through a hash (sha-256) on the key pair ID, which is then added to the password (suffix). Finally, the password is encrypted with AES CBC mode where the KEY and IV are unique to that user.
+
+![Alt text](img/diagrama.png)
 
 Webapp:
 
-- Ao clicar no botão UAP a webapp envia um pedido para o utilizador que será apanhado pela UAP.
-- Enquanto o e-chap é realizado a webapp espera mostrando uma loading page, e quando estiver concluído o utilizador é redirecionado para a sua conta.
+- When clicking on the UAP button, the webapp sends a request to the user that will be picked up by the UAP.
+- While the e-chap is being performed, the webapp waits, displaying a loading page, and when it is complete, the user is redirected to their account.
 
-### Observações 
-
-No sentido de uma melhor visuzalização no ecrã, o trabalho realizado, Project-2-SIO-equipa_16, assim como o anterior, project-1-vulnerabilities, devem ser colocados com uma dimensão 1920x1080 e com uma escala a 100%.
+![Alt text](img/diagrama2.png)
